@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ShortLink.Models.Url>
+
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="row-6">
+            <table class="table">
+                <tr>
+                    <th style="width: 25%;">Длинная ссылка</th>
+                    <th style="width: 25%;">Короткая ссылка</th>
+                    <th style="width: 16%;">Дата создания</th>
+                    <th style="width: 10%;">Число переходов</th>
+                    <th style="width: 7%;"></th>
+                    <th style="width: 7%;"></th>
+                </tr>
+                @foreach (var item in @Model)
+                {
+                    <tr>
+                        <td style="width: 25%;">@item.LongUrl</td>
+                        <td style="width: 25%;"><a asp-area="" asp-controller="Home" asp-action="RedirectToUrl" asp-route-link="@item.ShortUrl" target="_blank">@item.ShortUrl</a></td>
+                        <td style="width: 16%;">@item.DateCreate</td>
+                        <td style="width: 10%;">@item.NumberFollowTheLink</td>
+                        <td style="width: 7%;"><a href="~/Home/Edit/@item.Id"><img src="~/img/edit.png" alt="Редактировать" style="width: 20px;" /></a></td>
+                        <td style="width: 7%;"><a href="~/Home/Delete/@item.Id"><img src="~/img/recycle_bin.png" alt="Редактировать" style="width: 20px;" /></a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+
+</div>

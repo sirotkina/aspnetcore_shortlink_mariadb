@@ -1,0 +1,39 @@
+﻿@model ShortLink.Models.Url
+
+@{
+    ViewData["Title"] = "Создание";
+}
+
+    <h1>Создание ссылки</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Id" class="form-control" type="hidden" />
+                <input asp-for="ShortUrl" class="form-control" type="hidden" />
+                <input asp-for="DateCreate" class="form-control" type="hidden" />
+                <input asp-for="NumberFollowTheLink" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LongUrl" class="control-label"></label>
+                <input asp-for="LongUrl" class="form-control" />
+                <span asp-validation-for="LongUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить ссылку" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<hr />
+<div>
+    <a asp-action="Index" class="btn btn-primary" >На главную</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
